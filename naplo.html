@@ -5,14 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Naplózva</title>
+    <link rel="stylesheet" href="naplo.css">
 </head>
 <body>
     <h1>XMLHttpRequest küldés</h1>
+    <select name="cel" id="celId">
+        <option value="">-- Válassz egy célt --</option>
+        <option value="posts">Posztok</option>
+        <option value="comments">Kommentek</option>
+        <option value="albums">Albumok</option>
+        <option value="photos">Képek</option>
+        <option value="todos">Teendők</option>
+        <option value="users">Felhasználók</option>
+    </select>
+    <br>
     <button id="kuld">Lekérés</button>
     <button id="torol">Takarítás</button>
     <br>
     <textarea id="log-area" cols="50" rows="20"></textarea>
     <div id="kapott"></div>
     <script src="naplo.js"></script>
+    <script src="formazas.js"></script>
 </body>
 </html>
