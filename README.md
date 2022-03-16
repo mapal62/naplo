@@ -1,0 +1,2 @@
+# naplo
+ JSON adatkérés
