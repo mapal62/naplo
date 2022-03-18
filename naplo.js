@@ -9,13 +9,24 @@ let xhr = new XMLHttpRequest();
 naplozas("<select> figyelése");
 const honnan = document.getElementById("celId");
 honnan.onchange = function () {
+  kapott = []; //struktúra váltás!!
   cel = honnan.value;
   switch (cel) {
     case "posts":
       url = "https://jsonplaceholder.typicode.com/posts";
       break;
+    case "comments":
+      url = "https://jsonplaceholder.typicode.com/comments";
+      break;
+    case "albums":
+      url = "https://jsonplaceholder.typicode.com/albums";
+      break;
+    case "cities":
+      url = "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
+      break;
 
     default:
+      url = "";
       break;
   }
 };
@@ -29,6 +40,15 @@ xhr.onreadystatechange = function () {
     switch (cel) {
       case "posts":
         kapottHTML = posztok(kapott, kapottHTML);
+        break;
+      case "comments":
+        kapottHTML = kommentek(kapott, kapottHTML);
+        break;
+      case "albums":
+        kapottHTML = albumok(kapott, kapottHTML);
+        break;
+      case "cities":
+        kapottHTML = varosok(kapott, kapottHTML);
         break;
 
       default:

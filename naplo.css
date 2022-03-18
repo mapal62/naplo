@@ -1,9 +1,12 @@
 #kapott {
-    width: 50%;
-    margin: 0 auto;
+  width: 50%;
+  margin: 0 auto;
 }
 .eltunes {
-    background-color: aqua;
-    transform: rotate(360deg) scale(0.01);
-    transition: 1s;
+  color: white;
+  transform: translateX(-100%) rotate(360deg) scale(0.01);
+  transition: 1s ease-in;
+}
+p {
+  margin: 0;
 }
