@@ -45,6 +45,18 @@ function albumok(adatok, belsoHTML) {
   }
   return belsoHTML;
 }
+
+function felhasznalok(adatok, belsoHTML) {
+  const limit = 6;
+  belsoHTML += `<h3>Az első ${limit} felhasználó (${adatok.length}-ból)</h3>`;
+  for (let i = 0; i < limit; i++) {
+    belsoHTML += `
+    <p>${adatok[i].name} / ${adatok[i].email}</p>
+    `;
+  }
+  return belsoHTML;
+}
+
 function varosok(adatok, belsoHTML) {
   const limit = 10;
   belsoHTML += `<h3>Az első ${limit} város (${adatok.length}-ból)</h3>`;

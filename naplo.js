@@ -21,6 +21,9 @@ honnan.onchange = function () {
     case "albums":
       url = "https://jsonplaceholder.typicode.com/albums";
       break;
+    case "users":
+      url = "https://jsonplaceholder.typicode.com/users";
+      break;
     case "cities":
       url = "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
       break;
@@ -46,6 +49,9 @@ xhr.onreadystatechange = function () {
         break;
       case "albums":
         kapottHTML = albumok(kapott, kapottHTML);
+        break;
+      case "users":
+        kapottHTML = felhasznalok(kapott, kapottHTML);
         break;
       case "cities":
         kapottHTML = varosok(kapott, kapottHTML);

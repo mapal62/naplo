@@ -4,7 +4,7 @@
 }
 .eltunes {
   color: white;
-  transform: translateX(-100%) rotate(360deg) scale(0.01);
+  /* transform: translateX(-100%) rotate(360deg) scale(0.01); */
   transition: 1s ease-in;
 }
 p {
