@@ -34,7 +34,21 @@ honnan.onchange = function () {
   }
 };
 
+document.getElementById("kuld").onclick = function () {
+  if (url === "") {
+    naplozas("!! Válassz cél adatot !!");
+    return;
+  }
+  naplozas("");
+  naplozas("XHR kérés felépítése előtt: " + xhr.readyState);
+  xhr.open("GET", url);
+  naplozas("XHR kérés elküldése előtt: " + xhr.readyState);
+  xhr.send();
+};
+
+
 naplozas("XHR állapot figyelése előtt: " + xhr.readyState);
+// response esetén
 xhr.onreadystatechange = function () {
   naplozas("XHR állapot: " + xhr.readyState);
   if (xhr.readyState === 4 && xhr.status === 200) {
@@ -56,7 +70,6 @@ xhr.onreadystatechange = function () {
       case "cities":
         kapottHTML = varosok(kapott, kapottHTML);
         break;
-
       default:
         break;
     }
@@ -64,37 +77,8 @@ xhr.onreadystatechange = function () {
   }
 };
 
-document.getElementById("kuld").onclick = function () {
-  if (url === "") {
-    naplozas("!! Válassz cél adatot !!");
-    return;
-  }
-  naplozas("");
-  naplozas("XHR kérés felépítése előtt: " + xhr.readyState);
-  xhr.open("GET", url);
-  naplozas("XHR kérés elküldése előtt: " + xhr.readyState);
-  xhr.send();
-};
 
 document.getElementById("torol").onclick = function () {
   takaritas();
 };
 
-function naplozas(uzenet) {
-  if (uzenet === "") {
-    kezdet = Date.now();
-  }
-  document.getElementById("log-area").value +=
-    "\n" + `${Date.now() - kezdet}` + " ms, " + uzenet;
-}
-
-function takaritas() {
-  const adatok = document.getElementById("kapott");
-  adatok.classList.add("eltunes");
-  adatok.ontransitionend = function () {
-    adatok.classList.remove("eltunes");
-    document.getElementById("log-area").value = "";
-    document.getElementById("kapott").innerHTML = "";
-    kapott = [];
-  };
-}

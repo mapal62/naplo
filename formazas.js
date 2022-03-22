@@ -66,11 +66,31 @@ function varosok(adatok, belsoHTML) {
     <p>${adatok[i].city} / ${adatok[i].state}</p>
     `;
   }
+  belsoHTML += '<input id="c-keres" type="text" placeholder="keresés"><ul></ul>';
+  return belsoHTML;
+}
 
-  belsoHTML += '<input id="c-keres" type="text" placeholder="keresés"><ul>';
+function cityKereses(adatok, belsoHTML){
   adatok.forEach((element) => {
     belsoHTML += `<li>${element.city} ${element.population}</li>`;
   });
-  belsoHTML += "</ul>";
-  return belsoHTML;
+}
+
+function naplozas(uzenet) {
+  if (uzenet === "") {
+    kezdet = Date.now();
+  }
+  document.getElementById("log-area").value +=
+    "\n" + `${Date.now() - kezdet}` + " ms, " + uzenet;
+}
+
+function takaritas() {
+  const adatok = document.getElementById("kapott");
+  adatok.classList.add("eltunes");
+  adatok.ontransitionend = function () {
+    adatok.classList.remove("eltunes");
+    document.getElementById("log-area").value = "";
+    document.getElementById("kapott").innerHTML = "";
+    kapott = [];
+  };
 }
