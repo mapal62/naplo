@@ -25,7 +25,8 @@ honnan.onchange = function () {
       url = "https://jsonplaceholder.typicode.com/users";
       break;
     case "cities":
-      url = "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
+      url =
+        "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
       break;
 
     default:
@@ -45,7 +46,6 @@ document.getElementById("kuld").onclick = function () {
   naplozas("XHR kérés elküldése előtt: " + xhr.readyState);
   xhr.send();
 };
-
 
 naplozas("XHR állapot figyelése előtt: " + xhr.readyState);
 // response esetén
@@ -74,11 +74,13 @@ xhr.onreadystatechange = function () {
         break;
     }
     document.getElementById("kapott").innerHTML = kapottHTML;
+    let keresett = document.getElementById("c-keres");
+    if (keresett) {
+      cityKereses(keresett, kapott);
+    }
   }
 };
-
 
 document.getElementById("torol").onclick = function () {
   takaritas();
 };
-

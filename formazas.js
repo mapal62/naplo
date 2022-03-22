@@ -59,21 +59,33 @@ function felhasznalok(adatok, belsoHTML) {
 
 function varosok(adatok, belsoHTML) {
   const limit = 10;
-  belsoHTML += `<h3>Az első ${limit} város (${adatok.length}-ból)</h3>`;
+  belsoHTML = `<h3>Az első ${limit} város (${adatok.length}-ból)</h3>`;
 
   for (let i = 0; i < limit; i++) {
     belsoHTML += `
     <p>${adatok[i].city} / ${adatok[i].state}</p>
     `;
   }
-  belsoHTML += '<input id="c-keres" type="text" placeholder="keresés"><ul></ul>';
+  belsoHTML +=
+    '<input id="c-keres" type="text" placeholder="keresés"><ul></ul>';
   return belsoHTML;
 }
 
-function cityKereses(adatok, belsoHTML){
-  adatok.forEach((element) => {
-    belsoHTML += `<li>${element.city} ${element.population}</li>`;
-  });
+function cityKereses(keresett, adatok) {
+  console.dir(keresett);
+  keresett.onkeyup = function () {
+    let minta = new RegExp(this.value, "gi");
+    console.log(minta);
+    let szurt = adatok.filter(
+      (egySor) => egySor.city.match(minta) || egySor.state.match(minta)
+    );
+    console.log(szurt);
+    let belsoHTML = "";
+    szurt.forEach((element) => {
+      belsoHTML += `<li>${element.city} ${element.population}</li>`;
+    });
+    document.querySelector('#kapott ul').innerHTML = belsoHTML;
+  };
 }
 
 function naplozas(uzenet) {
